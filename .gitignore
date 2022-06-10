@@ -1,5 +1,6 @@
 /node_modules
 
 client/build
+server/config/config.json
 
 /dist
