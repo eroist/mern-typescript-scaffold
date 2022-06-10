@@ -1,5 +1,19 @@
-import React from "react";
+import React, { FC, lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+import ThemedSuspense from "../components/Loading";
 
-export default function index() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
-}
+const NotFound = lazy(() => import("./NotFound"));
+
+const Views: FC = () => {
+  return (
+    <Suspense fallback={<ThemedSuspense />}>
+      <div className={`flex flex-row h-screen relative bg-gray-100`}>
+        <Routes>
+          <Route path="/" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    </Suspense>
+  );
+};
+export default Views;
