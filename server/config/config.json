@@ -1,6 +1,6 @@
 {
   "DB_URL": {
-    "DEV": "_",
-    "PRO": "_"
+    "DEV": "mongodb://localhost:27017",
+    "PRO": "mongodb://localhost:27017"
   }
 }

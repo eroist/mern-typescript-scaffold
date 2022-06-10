@@ -1,6 +1,7 @@
 /node_modules
+
 /dist
+
 client/build
 
-server/config/config.json
 .env
