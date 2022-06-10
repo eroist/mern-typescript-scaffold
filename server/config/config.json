@@ -1,6 +1,6 @@
 {
   "DB_URL": {
-    "DEV": "mongodb://taka:taka@34.225.78.5:27017/marketplace",
-    "PRO": "mongodb://taka:taka@34.225.78.5:27017/marketplace"
+    "DEV": "_",
+    "PRO": "_"
   }
 }
