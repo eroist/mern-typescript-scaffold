@@ -1,5 +1,6 @@
 import express from "express";
 import helmet from "helmet";
+import compression from "compression";
 import bodyParser from "body-parser";
 import cors from "cors";
 import path from "path";
@@ -7,6 +8,7 @@ import path from "path";
 import connectDB from "./config";
 
 const app = express();
+app.use(compression());
 app.use(
   cors({
     origin: "*",

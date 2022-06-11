@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-// user defined
-import Config from "../config/config.json";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const auth = (req: Request, res: Response, next: NextFunction) => {
   // Get token from header
-  const token = req.header("x-auth-token");
+  const token = req.headers.authorization;
 
   // Check if not token
   if (!token) {
@@ -14,11 +15,11 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
 
   // Verify token
   try {
-    jwt.verify(token, Config.JWT, (error: any, decoded: { user: any }) => {
+    jwt.verify(token, process.env.JWT, (error: any, decoded: { user: any }) => {
       if (error) {
         return res.status(401).json({ msg: "Token is not valid" });
       } else {
-        res.locals.user = decoded.user;
+        req.body.token = decoded.user;
         next();
       }
     });
