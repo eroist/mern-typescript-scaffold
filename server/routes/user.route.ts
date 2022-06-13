@@ -63,6 +63,7 @@ const userRoutes = () => {
           { expiresIn: "5 days" },
           (err, token) => {
             if (err) throw err;
+
             res.json({ token });
           }
         );
@@ -72,4 +73,8 @@ const userRoutes = () => {
       }
     }
   );
+
+  return router;
 };
+
+export default userRoutes;

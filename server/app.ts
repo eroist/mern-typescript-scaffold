@@ -6,6 +6,8 @@ import cors from "cors";
 import path from "path";
 // user defined
 import connectDB from "./config";
+import authRoutes from "./routes/auth.route";
+import userRoutes from "./routes/user.route";
 
 const app = express();
 app.use(compression());
@@ -17,6 +19,10 @@ app.use(
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//Define Routes
+app.use("/api/auth", authRoutes());
+app.use("/api/user", userRoutes());
 
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {

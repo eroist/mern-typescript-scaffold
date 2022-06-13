@@ -42,7 +42,12 @@ export default createReducer<Auth>(initialState, (builder) =>
     .addCase(loginError, (state) => {
       return { ...state };
     })
-    .addCase(registerSuccess, (state) => state)
+    .addCase(registerSuccess, (state, { payload }) => {
+      return {
+        ...state,
+        ...payload,
+      };
+    })
     .addCase(registerError, (state) => state)
     .addCase(logOut, (state) => {
       return {
@@ -53,4 +58,5 @@ export default createReducer<Auth>(initialState, (builder) =>
         user: null,
       };
     })
+    .addDefaultCase((state) => state)
 );

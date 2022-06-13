@@ -36,13 +36,13 @@ const authRoutes = () => {
 
       try {
         let user = await User.findOne({ email });
-
+        console.log(user);
         if (!user) {
           return res
             .status(400)
             .json({ errors: [{ msg: "Invalid Credentials" }] });
         }
-
+        console.log(user);
         const isMatch = bcrypt.compareSync(password, user.password);
 
         if (!isMatch) {
@@ -72,6 +72,8 @@ const authRoutes = () => {
       }
     }
   );
+
+  return router;
 };
 
 export default authRoutes;
